@@ -1,3 +1,3 @@
 # Mailbox
 
-Mailing app with ReactJS, Redux, Firebase.
+Mailing app with ReactJS, Redux, Firebase, Material UI, React Router and more...
