@@ -10,6 +10,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import InboxIcon from '@material-ui/icons/Inbox';
 import Section from './Section';
+import EmailRow from './EmailRow';
 
 export default function EmailList() {
     return (
@@ -40,6 +41,20 @@ export default function EmailList() {
                 <Section Icon={InboxIcon} title="Primary" color="tomato" selected={true}></Section>
                 <Section Icon={PeopleIcon} title="Social" color="steelblue"></Section>
                 <Section Icon={LocalOfferIcon} title="Promotions" color="seagreen"></Section>
+            </div>
+            <div className="emailList__list">
+                <EmailRow id="1" 
+                          title="Twitch" 
+                          subject="Follow our best streamers" 
+                          description="Digital painting streamers are awesome!" 
+                          time="14:47"
+                />
+                <EmailRow id="2" 
+                          title="Twitch" 
+                          subject="Follow our best streamers" 
+                          description="Digital painting streamers are awesome!" 
+                          time="10:25"
+                />                 
             </div>
         </div>
     )
