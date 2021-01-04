@@ -1,0 +1,17 @@
+.sidebar__newmessage {
+    margin: 15px 0 15px 0px !important;
+    color: gray;
+    padding: 10px 20px !important;
+    text-transform: capitalize !important;
+    color: gray !important;
+    border-radius: 0px !important;
+}
+
+.sidebar__footer{
+    display: flex;
+    justify-content: center;   
+}
+
+.sidebar__footer .MuiSvgIcon-root {
+    font-size: 20px;
+}
