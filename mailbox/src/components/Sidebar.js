@@ -30,8 +30,8 @@ export default function Sidebar() {
             <SidebarOption Icon={InsertDriveFileIcon} title="Drafts" number={17} />
             <SidebarOption Icon={ExpandMoreIcon} title="More" number={5} />
 
-            <div class="sidebar__footer">
-                <div class="sidebar__footerIcons">
+            <div className="sidebar__footer">
+                <div className="sidebar__footerIcons">
                     <IconButton>
                         <ContactsIcon />
                     </IconButton>
