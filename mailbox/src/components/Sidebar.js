@@ -13,12 +13,19 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ContactsIcon from '@material-ui/icons/Contacts';
 import MessageIcon from '@material-ui/icons/Message';
 import PhoneIcon from '@material-ui/icons/Phone';
+import { useDispatch } from 'react-redux';
+import { openSendMessage } from '../features/mailSlice';
 
 export default function Sidebar() {
+    const dispatch = useDispatch();
+
     return (
         <div className="sidebar">
-            <Button className="sidebar__newmessage" 
-                    startIcon={<AddIcon />}>
+            <Button 
+                className="sidebar__newmessage" 
+                startIcon={<AddIcon />}
+                onClick={() => dispatch(openSendMessage())}
+            >
                 New message
             </Button>
 

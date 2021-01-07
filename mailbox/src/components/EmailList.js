@@ -28,7 +28,7 @@ export default function EmailList() {
                         <MoreVertIcon />
                     </IconButton>
                 </div>
-                <div class="emailList__settingsRight">
+                <div className="emailList__settingsRight">
                     <IconButton>
                         <ChevronLeftIcon />
                     </IconButton>
