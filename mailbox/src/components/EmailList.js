@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './EmailList.css';
 import { Checkbox, IconButton } from '@material-ui/core';
 import RefreshIcon from '@material-ui/icons/Refresh';
@@ -11,8 +11,33 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import InboxIcon from '@material-ui/icons/Inbox';
 import Section from './Section';
 import EmailRow from './EmailRow';
+import { db } from '../firebase';
 
 export default function EmailList() {
+    const [emails, setEmails] = useState([]);
+    
+    useEffect(() => {
+        db.collection('emails')
+        .orderBy('timestamp', 'desc')
+        .get()
+        .then((querySnapshot) => {
+            setEmails(
+                    querySnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    data: doc.data()
+                }))
+            )
+        });
+    }, [emails]);
+
+    const getTimeStr = (timestamp) => {
+        let date = new Date(timestamp*1000);
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+
+        return `${hours}:${minutes}`; 
+    };
+
     return (
         <div className="emailList">
             <div className="emailList__settings">
@@ -43,18 +68,16 @@ export default function EmailList() {
                 <Section Icon={LocalOfferIcon} title="Promotions" color="seagreen"></Section>
             </div>
             <div className="emailList__list">
-                <EmailRow id="1" 
-                          title="Twitch" 
-                          subject="Follow our best streamers" 
-                          description="Digital painting streamers are awesome!" 
-                          time="14:47"
-                />
-                <EmailRow id="2" 
-                          title="Twitch" 
-                          subject="Follow our best streamers" 
-                          description="Digital painting streamers are awesome!" 
-                          time="10:25"
-                />                 
+                {emails.map(({id, data: { to, subject, message, timestamp }}) => (
+                    <EmailRow 
+                        id={id}
+                        key={id}
+                        title={to}
+                        subject={subject}
+                        description={message}
+                        time={getTimeStr(timestamp)}
+                    />
+                ))}              
             </div>
         </div>
     )
